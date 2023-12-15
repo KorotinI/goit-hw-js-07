@@ -12,3 +12,8 @@ body {
   color: #212121;
   line-height: 1.5;
 }
+.gallery {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+}
