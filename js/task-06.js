@@ -1,40 +1,36 @@
-function getRandomHexColor() {
-  return `#${Math.floor(Math.random() * 16777215)
-    .toString(16)
-    .padStart(6, 0)}`;
-}
-function createBoxes() {
-  const boxCountInput = document.getElementById("boxCountInput");
-  const amount = parseInt(boxCountInput.value);
-
-  if (isNaN(amount) || amount < 1 || amount > 100) {
-    alert("Please enter a valid number between 1 and 100.");
-    return;
+ function getRandomHexColor() {
+    return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, 0)}`;
   }
 
-  const boxesContainer = document.getElementById("boxes");
-  boxesContainer.innerHTML = "";
+  function createBoxes() {
+    const inputAmount = document.getElementById('inputAmount');
+    const amount = parseInt(inputAmount.value);
 
-  let size = 30;
+    if (isNaN(amount) || amount < 1 || amount > 100) {
+      alert('Please enter a number between 1 and 100.');
+      return;
+    }
 
-  for (let i = 0; i < amount; i++) {
-    const box = document.createElement("div");
-    box.style.width = `${size}px`;
-    box.style.height = `${size}px`;
-    box.style.backgroundColor = getRandomHexColor();
-    boxesContainer.appendChild(box);
-    size += 10;
+    const boxesContainer = document.getElementById('boxes');
+    boxesContainer.innerHTML = '';
+
+    let boxSize = 30;
+
+    for (let i = 0; i < amount; i++) {
+      const box = document.createElement('div');
+      box.style.width = `${boxSize}px`;
+      box.style.height = `${boxSize}px`;
+      box.style.backgroundColor = getRandomHexColor();
+      box.classList.add('box');
+      boxesContainer.appendChild(box);
+
+      boxSize += 10;
+    }
+
+    inputAmount.value = '';
   }
 
-  boxCountInput.value = "";
-}
-
-function destroyBoxes() {
-  const boxesContainer = document.getElementById("boxes");
-  boxesContainer.innerHTML = "";
-}
-
-document.getElementById("createButton").addEventListener("click", createBoxes);
-document
-  .getElementById("destroyButton")
-  .addEventListener("click", destroyBoxes);
+  function destroyBoxes() {
+    const boxesContainer = document.getElementById('boxes');
+    boxesContainer.innerHTML = '';
+  }
