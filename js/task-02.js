@@ -27,16 +27,13 @@ const images = [
     alt: 'Zebras on Zebra',
   },
 ];
-const gallery = document.querySelector(".gallery");
 
-images.forEach((image) => {
-  const galleryItem = document.createElement("li");
-  galleryItem.classList.add("gallery-item");
+const box = document.querySelector(".gallery");
 
-  const img = document.createElement("img");
-  img.src = image.url;
-  img.alt = image.alt;
+    const markup = images.map(
+        e => `<li><img src="${e.url}" alt="${e.alt}" class="gallery-imgs"></li>`
+    ).join("");
 
-  galleryItem.appendChild(img);
-  gallery.appendChild(galleryItem);
-});
+console.log(markup)
+
+box.insertAdjacentHTML('afterbegin', markup)
